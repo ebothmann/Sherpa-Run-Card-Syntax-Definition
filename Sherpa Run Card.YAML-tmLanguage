@@ -17,12 +17,12 @@ patterns: [
         "captures": {
             "1": { "name": "keyword.source.sherpa" }
         },
-        "comment": "Variables like $PARAM1, $TM_SELECTION..."
+        "comment": "Section names"
     },
 
-    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|NLO_QCD_Mode|NLO_QCD_Part|Order_EW|BEGIN_RIVET",
+    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|NLO_QCD_Mode|NLO_QCD_Part|Order_EW|BEGIN_RIVET|MI_HANDLER|FRAGMENTATION",
         "name": "keyword.source.sherpa",
-        "comment": "Variables like $PARAM1, $TM_SELECTION..."
+        "comment": "Option names"
     },
 
     { "match": "( )([BIVRS]+)([;\n \t])",
@@ -30,17 +30,17 @@ patterns: [
         "captures": {
             "2": { "name": "string.source.sherpa" }
         },
-        "comment": "Specification for NLO_QCD_Part"
+        "comment": "Option values for NLO_QCD_Part"
     },
 
     { "match": "Comix|Amegic|Internal|Weighted|Rivet|Fixed_Order|None|Off|MC@NLO",
         "name": "string.source.sherpa",
-        "comment": ""
+        "comment": "Other option values"
     },
 
     { "match": "VAR|p",
-        "name": "function.source.sherpa",
-        "comment": ""
+        "name": "string.source.sherpa",
+        "comment": "Functions"
     }
 
 ]
