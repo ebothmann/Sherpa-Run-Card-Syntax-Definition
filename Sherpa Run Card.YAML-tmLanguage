@@ -38,8 +38,27 @@ patterns: [
         "comment": "Other option values"
     },
 
-    { "match": "VAR|p",
-        "name": "string.source.sherpa",
+    { "match": "(VAR)\\{",
+        "name": "",
+        "captures": {
+            "1": { "name": "string.source.sherpa" }
+        },
+        "comment": "Functions"
+    },
+
+    { "match": "(Abs2)\\(",
+        "name": "",
+        "captures": {
+            "1": { "name": "string.source.sherpa" }
+        },
+        "comment": "Functions"
+    },
+
+    { "match": "(p)\\[",
+        "name": "",
+        "captures": {
+            "1": { "name": "string.source.sherpa" }
+        },
         "comment": "Functions"
     }
 
