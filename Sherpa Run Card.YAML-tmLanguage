@@ -12,7 +12,7 @@ patterns: [
         "comment": "Comments that start with a `#` or a `%`"
     },
 
-    { "match": "([ =,\\[{]{1,1})(-?[.0-9]+M?)",
+    { "match": "([ *=,\\[{]{1,1})(-?[.e0-9]+M?)",
         "name": "",
         "captures": {
             "2": { "name": "constant.numeric.source.sherpa" },
@@ -29,7 +29,7 @@ patterns: [
         "comment": "Section names"
     },
 
-    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|NLO_QCD_Mode|NLO_QCD_Part|Order_EW|BEGIN_RIVET|MI_HANDLER|FRAGMENTATION|SP_NLOCT|EXCLUSIVE_CLUSTER_MODE|CSS_KFACTOR_SCHEME|MODEL|MASSIVE",
+    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|NLO_QCD_Mode|NLO_QCD_Part|Order_EW|BEGIN_RIVET|MI_HANDLER|FRAGMENTATION|SP_NLOCT|EXCLUSIVE_CLUSTER_MODE|CSS_KFACTOR_SCHEME|MODEL|MASSIVE|EVENT_OUTPUT",
         "name": "keyword.source.sherpa",
         "comment": "Option names"
     },
@@ -42,7 +42,7 @@ patterns: [
         "comment": "Option values for NLO_QCD_Part"
     },
 
-    { "match": "Comix|Amegic|Internal|Weighted|Rivet|Fixed_Order|None|Off|MC@NLO|SM",
+    { "match": "Comix|Amegic|Internal|Weighted|Rivet|Fixed_Order|None|Off|MC@NLO|SM|HepMC_Short",
         "name": "constant.language.source.sherpa",
         "comment": "Other option values"
     },
