@@ -12,6 +12,15 @@ patterns: [
         "comment": "Comments that start with a `#` or a `%`"
     },
 
+    { "match": "([ =,\\[{]{1,1})(-?[.0-9]+M?)",
+        "name": "",
+        "captures": {
+            "2": { "name": "constant.numeric.source.sherpa" },
+            "3": { "name": "constant.numeric.source.sherpa" }
+        },
+        "comment": "Numeric constants"
+    },
+
     { "match": "\\(([a-z]+)\\)",
         "name": "",
         "captures": {
@@ -20,7 +29,7 @@ patterns: [
         "comment": "Section names"
     },
 
-    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|NLO_QCD_Mode|NLO_QCD_Part|Order_EW|BEGIN_RIVET|MI_HANDLER|FRAGMENTATION",
+    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|NLO_QCD_Mode|NLO_QCD_Part|Order_EW|BEGIN_RIVET|MI_HANDLER|FRAGMENTATION|SP_NLOCT|EXCLUSIVE_CLUSTER_MODE|CSS_KFACTOR_SCHEME|MODEL|MASSIVE",
         "name": "keyword.source.sherpa",
         "comment": "Option names"
     },
@@ -28,20 +37,20 @@ patterns: [
     { "match": "( )([BIVRS]+)([;\n \t])",
         "name": "",
         "captures": {
-            "2": { "name": "string.source.sherpa" }
+            "2": { "name": "constant.language.source.sherpa" }
         },
         "comment": "Option values for NLO_QCD_Part"
     },
 
-    { "match": "Comix|Amegic|Internal|Weighted|Rivet|Fixed_Order|None|Off|MC@NLO",
-        "name": "string.source.sherpa",
+    { "match": "Comix|Amegic|Internal|Weighted|Rivet|Fixed_Order|None|Off|MC@NLO|SM",
+        "name": "constant.language.source.sherpa",
         "comment": "Other option values"
     },
 
-    { "match": "(VAR)\\{",
+    { "match": "(VAR|METS)\\{",
         "name": "",
         "captures": {
-            "1": { "name": "string.source.sherpa" }
+            "1": { "name": "entity.name.function.source.sherpa" }
         },
         "comment": "Functions"
     },
@@ -49,7 +58,7 @@ patterns: [
     { "match": "(Abs2)\\(",
         "name": "",
         "captures": {
-            "1": { "name": "string.source.sherpa" }
+            "1": { "name": "entity.name.function.source.sherpa" }
         },
         "comment": "Functions"
     },
@@ -57,7 +66,7 @@ patterns: [
     { "match": "(p)\\[",
         "name": "",
         "captures": {
-            "1": { "name": "string.source.sherpa" }
+            "1": { "name": "entity.name.function.source.sherpa" }
         },
         "comment": "Functions"
     }
