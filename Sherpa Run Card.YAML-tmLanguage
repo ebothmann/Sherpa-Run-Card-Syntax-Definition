@@ -1,74 +1,204 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
----
-name: Sherpa Run Card
-scopeName: source.sherpa
-fileTypes: ["dat"]
-uuid: dd8ff0c6-5849-41f4-9bd8-e0167ae42236
+{   
+    name: Sherpa Run Card,
+    scopeName: source.sherpa,
+    fileTypes: ["dat"],
+    uuid: dd8ff0c6-5849-41f4-9bd8-e0167ae42236,
+    patterns: [
+        { include: '#number-sign-comment' },
+        { include: '#percentage-comment' },
 
-patterns: [
-
-    { "match": "(#.*$)|(%.*$)",
-        "name": "comment.source.sherpa",
-        "comment": "Comments that start with a `#` or a `%`"
-    },
-
-    { "match": "([ *=,\\[{]{1,1})(-?[.e0-9]+M?)",
-        "name": "",
-        "captures": {
-            "2": { "name": "constant.numeric.source.sherpa" },
-            "3": { "name": "constant.numeric.source.sherpa" }
+        {   name: 'meta.group.run',
+            begin: '\((run)',
+            end: '(run)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'},
+                {
+                    match: 'EVENTS|EVENT_TYPE|TUNE|OUTPUT|LOG_FILE|RANDOM_SEED|EVENT_SEED_MODE|ANALYSIS_OUTPUT|ANALYSIS|TIMEOUT|RLIMIT_AS|BATCH_MODE|NUM_ACCURACY|SHERPA_CPP_PATH|SHERPA_LIB_PATH|EVENT_OUTPUT|FILE_SIZE|NTUPLE_SIZE|EVT_FILE_PATH|OUTPUT_PRECISION|PG_THREADS|COMIX_ME_THREADS|COMIX_PS_THREADS',
+                    name: 'variable.parameter'
+                },
+                {
+                    match: 'Internal|Rivet|HZTool',
+                    name: 'constant.language'
+                }
+            ]
         },
-        "comment": "Numeric constants"
-    },
 
-    { "match": "\\(([a-z]+)\\)",
-        "name": "",
-        "captures": {
-            "1": { "name": "keyword.source.sherpa" }
+        {   name: 'meta.group.processes',
+            begin: '\((processes)',
+            end: '(processes)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#general-language-constants'},
+                {
+                    name: 'meta.group.processes.process',
+                    begin: '(Process)',
+                    end: '(End process)',
+                    beginCaptures: {
+                        "1": { name: 'keyword.control' }
+                    },
+                    endCaptures: {
+                        "1": { name: 'keyword.control' }
+                    },
+                    patterns: [
+                        { include: '#numeric-constant'},
+                        {
+                            match: '->',
+                            name: 'keyword.operator'
+                        },
+                        {
+                            match: 'DecayOS|Decay|No_Decay|Scales|Couplings|CKKW|Selector_File|Order_EW|Max_Order_EW|Max_Order_QCD|Order_QCD|Min_N_Quarks|Max_N_Quarks|Min_N_TChannels|Max_N_TChannels|Print_Graphs|Integration_Error|Max_Epsilon|RS_Enhance_Factor|Enhance_Factor|Enhance_Function|Enhance_Observable|NLO_(QCD|EW)_(Mode|Part)|Subdivide_Virtual|ME_Generator|Loop_Generator|Integrator',
+                            name: 'variable.parameter'
+                        }
+                    ]
+                }
+            ]
         },
-        "comment": "Section names"
-    },
 
-    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|NLO_QCD_Mode|NLO_QCD_Part|Order_EW|BEGIN_RIVET|MI_HANDLER|FRAGMENTATION|SP_NLOCT|EXCLUSIVE_CLUSTER_MODE|CSS_KFACTOR_SCHEME|MODEL|MASSIVE|EVENT_OUTPUT",
-        "name": "keyword.source.sherpa",
-        "comment": "Option names"
-    },
-
-    { "match": "( )([BIVRS]+)([;\n \t])",
-        "name": "",
-        "captures": {
-            "2": { "name": "constant.language.source.sherpa" }
+        {   name: 'meta.group.model',
+            begin: '\((model)',
+            end: '(model)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'},
+                {
+                    match: 'MODEL|MASSIVE|MASS|WIDTH|ACTIVE|STABLE|PRIORITY',
+                    name: 'variable.parameter'
+                }
+            ]
         },
-        "comment": "Option values for NLO_QCD_Part"
-    },
 
-    { "match": "Comix|Amegic|Internal|Weighted|Rivet|Fixed_Order|None|Off|MC@NLO|SM|HepMC_Short",
-        "name": "constant.language.source.sherpa",
-        "comment": "Other option values"
-    },
-
-    { "match": "(VAR|METS)\\{",
-        "name": "",
-        "captures": {
-            "1": { "name": "entity.name.function.source.sherpa" }
+        {   name: 'meta.group.selector',
+            begin: '\((selector)',
+            end: '(selector)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'},
+                {
+                    match: 'Energy|ET|PT|(Pseudo)?Rapidity|Mass|(Beam)?Angle|Delta(Eta|Y|Phi|R)|Decay(Mass|2)?|(NJet|Cone|Jet)Finder',
+                    name: 'variable.parameter'
+                }
+            ]
         },
-        "comment": "Functions"
-    },
 
-    { "match": "(Abs2)\\(",
-        "name": "",
-        "captures": {
-            "1": { "name": "entity.name.function.source.sherpa" }
+        {   name: 'meta.group.analysis',
+            begin: '\((analysis)',
+            end: '(analysis)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'}
+            ]
         },
-        "comment": "Functions"
-    },
 
-    { "match": "(p)\\[",
-        "name": "",
-        "captures": {
-            "1": { "name": "entity.name.function.source.sherpa" }
+        {   name: 'meta.group.beam',
+            begin: '\((beam)',
+            end: '(beam)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'},
+                {
+                    match: 'BEAM_[12]|BEAM_ENERGY_[12]|BEAM_SPECTRUM_[12]|E_LASER_[12]|P_LASER_[12]|LASER_MODE|LASER_ANGLES|LASER_NONLINEARITY',
+                    name: 'variable.parameter'
+                }
+            ]
         },
-        "comment": "Functions"
+
+        {   name: 'meta.group.mi',
+            begin: '\((mi)',
+            end: '(mi)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'},
+                {
+                    match: 'MI_HANDLER|SCALE_MIN|PROFILE_(FUNCTION|PARAMETERS)|REFERENCE_SCALE|RESCALE_EXPONENT|SIGMA_ND_FACTOR|MI_RESULT_DIRECTORY(_SUFFIX)?',
+                    name: 'variable.parameter'
+                }
+            ]
+        },
+
+        {   match: '[^; \n]',
+            name: 'invalid.illegal',
+            comment: ''
+        }
+    ],
+    repository: {
+        "number-sign-comment": {
+            match: '#.*$',
+            name: 'comment.line.number-sign',
+            comment: ''
+        },
+        "percentage-comment": {
+            match: '%.*$',
+            name: 'comment.line.percentage',
+            comment: ''
+        },
+        "numeric-constant": {
+            match: '[ =\[](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
+            #match: '[ =](-?([0-9]*\.)?[0-9]+(M|e[0-9]+)?)',
+            captures: {
+                "1": { name: 'constant.numeric' }
+            },
+            name: ''
+        },
+        "general-language-constants": {
+            match: 'None|Off|On',
+            name: 'constant.language'
+        }
     }
-
-]
+}
