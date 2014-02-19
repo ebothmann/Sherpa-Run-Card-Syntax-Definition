@@ -33,6 +33,53 @@
             ]
         },
 
+        {   name: 'meta.group.integration',
+            begin: '\((integration)',
+            end: '(integration)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'},
+                {
+                    match: 'ERROR|INTEGRATOR|VEGAS|FINISH_OPTIMIZATION|PSI_(NMAX|ITMIN|ITMAX)',
+                    name: 'variable.parameter'
+                }
+            ]
+        },
+
+        {   name: 'meta.group.matrix_elements',
+            begin: '\((me)\)\{',
+            end: '\}\((me)\)',
+            beginCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            endCaptures: {
+                "1": { name: 'entity.name.group' }
+            },
+            patterns: [
+                { include: '#number-sign-comment' },
+                { include: '#percentage-comment' },
+                { include: '#numeric-constant'},
+                { include: '#general-language-constants'},
+                { include: '#internal-interpreter'},
+                {
+                    match: 'ME_SIGNAL_GENERATOR|RESULT_DIRECTORY|EVENT_GENERATION_MODE|SCALES|COUPLING_SCHEME|COUPLINGS|KFACTOR|YUKAWA_MASSES|DIPOLE_ALPHA|DIPOLE_AMIN|DIPOLE_NF_GSPLIT|DIPOLE_KAPPA',
+                    name: 'variable.parameter'
+                },
+                {
+                    match: 'Internal|Amegic|Comix|Weighted|Unweighted|PartiallyUnweighted|VAR',
+                    name: 'constant.language'
+                }
+            ]
+        },
+
         {   name: 'meta.group.processes',
             begin: '\((processes)',
             end: '(processes)\)',
@@ -65,6 +112,18 @@
                         {
                             match: 'DecayOS|Decay|No_Decay|Scales|Couplings|CKKW|Selector_File|Order_EW|Max_Order_EW|Max_Order_QCD|Order_QCD|Min_N_Quarks|Max_N_Quarks|Min_N_TChannels|Max_N_TChannels|Print_Graphs|Integration_Error|Max_Epsilon|RS_Enhance_Factor|Enhance_Factor|Enhance_Function|Enhance_Observable|NLO_(QCD|EW)_(Mode|Part)|Subdivide_Virtual|ME_Generator|Loop_Generator|Integrator',
                             name: 'variable.parameter'
+                        },
+                        { "match": "( )([BIVRS]+)([;\n \t])",
+                            "name": "",
+                            "captures": {
+                                "2": { "name": "constant.language" }
+                            },
+                            "comment": "Option values for NLO_QCD_Part"
+                        },
+
+                        { "match": "Fixed_Order|MC@NLO",
+                            "name": "constant.language",
+                            "comment": "Option values for NLO_QCD_Mode"
                         }
                     ]
                 }
@@ -123,10 +182,21 @@
                 "1": { name: 'entity.name.group' }
             },
             patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'}
+                {
+                    name: 'meta.group.analysis.rivet',
+                    begin: '(BEGIN_RIVET)',
+                    end: '(END_RIVET)',
+                    beginCaptures: {
+                        "1": { name: 'keyword.control' }
+                    },
+                    endCaptures: {
+                        "1": { name: 'keyword.control' }
+                    },
+                    patterns: [
+                        { include: '#number-sign-comment' },
+                        { include: '#percentage-comment' }
+                    ]
+                }
             ]
         },
 
@@ -178,6 +248,20 @@
         }
     ],
     repository: {
+        "internal-interpreter": {
+            begin: '\{',
+            end: '\}',
+            name: 'meta.internal-interpreter',
+            patterns: [
+                {
+                    match: '[ =\[*](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
+                    captures: {
+                        "1": { name: 'constant.numeric' }
+                    },
+                    name: ''
+                }
+            ]
+        },
         "number-sign-comment": {
             match: '#.*$',
             name: 'comment.line.number-sign',
@@ -190,7 +274,6 @@
         },
         "numeric-constant": {
             match: '[ =\[](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
-            #match: '[ =](-?([0-9]*\.)?[0-9]+(M|e[0-9]+)?)',
             captures: {
                 "1": { name: 'constant.numeric' }
             },

@@ -1,0 +1,102 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Sherpa Run Card
+scopeName: source.sherpa
+fileTypes: ["dat"]
+uuid: dd8ff0c6-5849-41f4-9bd8-e0167ae42236
+
+patterns: [
+
+    { "match": '#.*$',
+        "name": "comment.line.number-sign",
+        "comment": ""
+    },
+
+    { "match": '%.*$',
+        "name": "comment.line.number-sign",
+        "comment": ""
+    },
+
+    { "match": "\\(([a-z]+)\\)",
+        "name": "",
+        "captures": {
+            "1": { "name": "keyword.source.sherpa" }
+        },
+        "comment": "Section names"
+    },
+
+    { "name": "process.source.sherpa",
+       "begin": "(Process) ",
+       "beginCaptures": {
+           "1": { "name": "keyword.source.sherpa" }
+       },
+       "patterns": [
+
+        { "match": "NLO_QCD_Mode|NLO_QCD_Part|Order_EW",
+            "name": "variable.language.source.sherpa"
+           },
+
+           { "match": "( )([BIVRS]+)([;\n \t])",
+               "name": "",
+               "captures": {
+                   "2": { "name": "constant.language.source.sherpa" }
+               },
+               "comment": "Option values for NLO_QCD_Part"
+           },
+
+           { "match": "Fixed_Order|MC@NLO",
+               "name": "constant.language.source.sherpa",
+               "comment": "Option values for NLO_QCD_Mode"
+           }
+           
+       ],
+       "end": "(End process)",
+       "endCaptures": {
+           "1": { "name": "keyword.source.sherpa" }
+       }
+    },
+
+    { "match": "EVENTS|FILE_SIZE|ERROR|RANDOM_SEED|ME_SIGNAL_GENERATOR|EVENT_GENERATION_MODE|SCALES|RESULT_DIRECTORY|ANALYSIS_OUTPUT|ANALYSIS|BEAM_1|BEAM_2|BEAM_ENERGY_1|BEAM_ENERGY_2|BEGIN_RIVET|MI_HANDLER|FRAGMENTATION|SP_NLOCT|EXCLUSIVE_CLUSTER_MODE|CSS_KFACTOR_SCHEME|MODEL|MASSIVE|EVENT_OUTPUT",
+        "name": "keyword.source.sherpa",
+        "comment": "Option names"
+    },
+
+    { "match": "Comix|Amegic|Internal|Weighted|Rivet|None|Off|SM|HepMC_Short",
+        "name": "constant.language.source.sherpa",
+        "comment": "Other option values"
+    },
+
+    { "match": "(VAR|METS)\\{",
+        "name": "",
+        "captures": {
+            "1": { "name": "entity.name.function.source.sherpa" }
+        },
+        "comment": "Functions"
+    },
+
+    { "match": "([ *=,\\[{]{1,1})(-?[.e0-9]+M?)",
+        "name": "",
+        "captures": {
+            "2": { "name": "constant.numeric.source.sherpa" },
+            "3": { "name": "constant.numeric.source.sherpa" }
+        },
+        "comment": "Numeric constants"
+    },
+
+    { "match": "(Abs2)\\(",
+        "name": "",
+        "captures": {
+            "1": { "name": "entity.name.function.source.sherpa" }
+        },
+        "comment": "Functions"
+    },
+
+    { "match": "(p)\\[",
+        "name": "",
+        "captures": {
+            "1": { "name": "entity.name.function.source.sherpa" }
+        },
+        "comment": "Functions"
+    }
+
+]
