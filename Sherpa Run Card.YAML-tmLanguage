@@ -29,6 +29,10 @@
                 {
                     match: 'Internal|Rivet|HZTool',
                     name: 'constant.language'
+                },
+                {
+                    "match": '\}\(((?!run).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -50,6 +54,10 @@
                 {
                     match: 'ERROR|INTEGRATOR|VEGAS|FINISH_OPTIMIZATION|PSI_(NMAX|ITMIN|ITMAX)',
                     name: 'variable.parameter'
+                },
+                {
+                    "match": '\}\(((?!integration).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -76,6 +84,10 @@
                 {
                     match: 'Internal|Amegic|Comix|Weighted|Unweighted|PartiallyUnweighted|VAR',
                     name: 'constant.language'
+                },
+                {
+                    "match": '\}\(((?!me).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -128,6 +140,10 @@
                             "comment": "Option values for NLO_QCD_Mode"
                         }
                     ]
+                },
+                {
+                    "match": '\}\(((?!processes).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -149,6 +165,10 @@
                 {
                     match: 'MODEL|MASSIVE|MASS|WIDTH|ACTIVE|STABLE|PRIORITY',
                     name: 'variable.parameter'
+                },
+                {
+                    "match": '\}\(((?!model).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -170,6 +190,10 @@
                 {
                     match: 'Energy|ET|PT|(Pseudo)?Rapidity|Mass|(Beam)?Angle|Delta(Eta|Y|Phi|R)|Decay(Mass|2)?|(NJet|Cone|Jet)Finder',
                     name: 'variable.parameter'
+                },
+                {
+                    "match": '\}\(((?!selector).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -198,6 +222,10 @@
                         { include: '#number-sign-comment' },
                         { include: '#percentage-comment' }
                     ]
+                },
+                {
+                    "match": '\}\(((?!analysis).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -219,6 +247,10 @@
                 {
                     match: 'BEAM_[12]|BEAM_ENERGY_[12]|BEAM_SPECTRUM_[12]|E_LASER_[12]|P_LASER_[12]|LASER_MODE|LASER_ANGLES|LASER_NONLINEARITY',
                     name: 'variable.parameter'
+                },
+                {
+                    "match": '\}\(((?!beam).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -240,6 +272,10 @@
                 {
                     match: 'MI_HANDLER|SCALE_MIN|PROFILE_(FUNCTION|PARAMETERS)|REFERENCE_SCALE|RESCALE_EXPONENT|SIGMA_ND_FACTOR|MI_RESULT_DIRECTORY(_SUFFIX)?',
                     name: 'variable.parameter'
+                },
+                {
+                    "match": '\}\(((?!mi).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
@@ -264,6 +300,10 @@
                 },
                 { "match": "Ahadic|Lund|Hadrons",
                     "name": "constant.language",
+                },
+                {
+                    "match": '\}\(((?!fragmentation).)*$',
+                    "name": 'invalid.illegal'
                 }
             ]
         },
