@@ -1,353 +1,353 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
-{   
-    name: Sherpa Run Card,
-    scopeName: source.sherpa,
-    fileTypes: ["dat"],
-    uuid: dd8ff0c6-5849-41f4-9bd8-e0167ae42236,
-    patterns: [
-        { include: '#number-sign-comment' },
-        { include: '#percentage-comment' },
+---
+name: Sherpa Run Card
+scopeName: source.sherpa
+uuid: dd8ff0c6-5849-41f4-9bd8-e0167ae42236
+patterns: [
+    { include: '#number-sign-comment' },
+    { include: '#percentage-comment' },
 
-        {   name: 'meta.group.run',
-            begin: '\((run)',
-            end: '(run)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                {
-                    match: 'EVENTS|EVENT_TYPE|TUNE|OUTPUT|LOG_FILE|RANDOM_SEED|EVENT_SEED_MODE|ANALYSIS_OUTPUT|ANALYSIS|TIMEOUT|RLIMIT_AS|BATCH_MODE|NUM_ACCURACY|SHERPA_CPP_PATH|SHERPA_LIB_PATH|EVENT_OUTPUT|FILE_SIZE|NTUPLE_SIZE|EVT_FILE_PATH|OUTPUT_PRECISION|PG_THREADS|COMIX_ME_THREADS|COMIX_PS_THREADS',
-                    name: 'variable.parameter'
-                },
-                {
-                    match: 'Internal|Rivet|HZTool',
-                    name: 'constant.language'
-                },
-                {
-                    "match": '\}\(((?!run).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
+    {   name: 'meta.group.run',
+        begin: '\((run)',
+        end: '(run)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
         },
-
-        {   name: 'meta.group.integration',
-            begin: '\((integration)',
-            end: '(integration)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                {
-                    match: 'ERROR|INTEGRATOR|VEGAS|FINISH_OPTIMIZATION|PSI_(NMAX|ITMIN|ITMAX)',
-                    name: 'variable.parameter'
-                },
-                {
-                    "match": '\}\(((?!integration).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
         },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'EVENTS|EVENT_TYPE|TUNE|OUTPUT|LOG_FILE|RANDOM_SEED|EVENT_SEED_MODE|ANALYSIS_OUTPUT|ANALYSIS|TIMEOUT|RLIMIT_AS|BATCH_MODE|NUM_ACCURACY|SHERPA_CPP_PATH|SHERPA_LIB_PATH|EVENT_OUTPUT|FILE_SIZE|NTUPLE_SIZE|EVT_FILE_PATH|OUTPUT_PRECISION|PG_THREADS|COMIX_ME_THREADS|COMIX_PS_THREADS',
+                name: 'variable.parameter'
+            },
+            {
+                match: 'Internal|Rivet|HZTool',
+                name: 'constant.language'
+            },
+            {
+                "match": '\}\(((?!run).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
 
-        {   name: 'meta.group.matrix_elements',
-            begin: '\((me)\)\{',
-            end: '\}\((me)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                { include: '#internal-interpreter'},
-                {
-                    match: 'ME_SIGNAL_GENERATOR|RESULT_DIRECTORY|EVENT_GENERATION_MODE|SCALES|COUPLING_SCHEME|COUPLINGS|KFACTOR|YUKAWA_MASSES|DIPOLE_ALPHA|DIPOLE_AMIN|DIPOLE_NF_GSPLIT|DIPOLE_KAPPA',
-                    name: 'variable.parameter'
-                },
-                {
-                    match: 'Internal|Amegic|Comix|Weighted|Unweighted|PartiallyUnweighted|VAR',
-                    name: 'constant.language'
-                },
-                {
-                    "match": '\}\(((?!me).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
+    {   name: 'meta.group.integration',
+        begin: '\((integration)',
+        end: '(integration)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
         },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'ERROR|INTEGRATOR|VEGAS|FINISH_OPTIMIZATION|PSI_(NMAX|ITMIN|ITMAX)',
+                name: 'variable.parameter'
+            },
+            {
+                "match": '\}\(((?!integration).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
 
-        {   name: 'meta.group.processes',
-            begin: '\((processes)',
-            end: '(processes)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
+    {   name: 'meta.group.matrix_elements',
+        begin: '\((me)\)\{',
+        end: '\}\((me)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            { include: '#internal-interpreter'},
+            {
+                match: 'ME_SIGNAL_GENERATOR|RESULT_DIRECTORY|EVENT_GENERATION_MODE|SCALES|COUPLING_SCHEME|COUPLINGS|KFACTOR|YUKAWA_MASSES|DIPOLE_ALPHA|DIPOLE_AMIN|DIPOLE_NF_GSPLIT|DIPOLE_KAPPA',
+                name: 'variable.parameter'
             },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
+            {
+                match: 'Internal|Amegic|Comix|Weighted|Unweighted|PartiallyUnweighted|VAR',
+                name: 'constant.language'
             },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#general-language-constants'},
-                {
-                    name: 'meta.group.processes.process',
-                    begin: '(Process)',
-                    end: '(End process)',
-                    beginCaptures: {
-                        "1": { name: 'keyword.control' }
+            {
+                "match": '\}\(((?!me).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
+
+    {   name: 'meta.group.processes',
+        begin: '\((processes)',
+        end: '(processes)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#general-language-constants'},
+            {
+                name: 'meta.group.processes.process',
+                begin: '(Process)',
+                end: '(End process)',
+                beginCaptures: {
+                    "1": { name: 'keyword.control' }
+                },
+                endCaptures: {
+                    "1": { name: 'keyword.control' }
+                },
+                patterns: [
+                    { include: '#number-sign-comment' },
+                    { include: '#percentage-comment' },
+                    { include: '#numeric-constant'},
+                    {
+                        match: '->',
+                        name: 'keyword.operator'
                     },
-                    endCaptures: {
-                        "1": { name: 'keyword.control' }
+                    {
+                        match: 'DecayOS|Decay|No_Decay|Scales|Couplings|CKKW|Selector_File|Order_EW|Max_Order_EW|Max_Order_QCD|Order_QCD|Min_N_Quarks|Max_N_Quarks|Min_N_TChannels|Max_N_TChannels|Print_Graphs|Integration_Error|Max_Epsilon|RS_Enhance_Factor|Enhance_Factor|Enhance_Function|Enhance_Observable|NLO_(QCD|EW)_(Mode|Part)|Subdivide_Virtual|ME_Generator|Loop_Generator|Integrator',
+                        name: 'variable.parameter'
                     },
-                    patterns: [
-                        { include: '#number-sign-comment' },
-                        { include: '#percentage-comment' },
-                        { include: '#numeric-constant'},
-                        {
-                            match: '->',
-                            name: 'keyword.operator'
+                    { "match": "( )([BIVRS]+)([;\n \t])",
+                        "name": "",
+                        "captures": {
+                            "2": { "name": "constant.language" }
                         },
-                        {
-                            match: 'DecayOS|Decay|No_Decay|Scales|Couplings|CKKW|Selector_File|Order_EW|Max_Order_EW|Max_Order_QCD|Order_QCD|Min_N_Quarks|Max_N_Quarks|Min_N_TChannels|Max_N_TChannels|Print_Graphs|Integration_Error|Max_Epsilon|RS_Enhance_Factor|Enhance_Factor|Enhance_Function|Enhance_Observable|NLO_(QCD|EW)_(Mode|Part)|Subdivide_Virtual|ME_Generator|Loop_Generator|Integrator',
-                            name: 'variable.parameter'
-                        },
-                        { "match": "( )([BIVRS]+)([;\n \t])",
-                            "name": "",
-                            "captures": {
-                                "2": { "name": "constant.language" }
-                            },
-                            "comment": "Option values for NLO_QCD_Part"
-                        },
-
-                        { "match": "Fixed_Order|MC@NLO",
-                            "name": "constant.language",
-                            "comment": "Option values for NLO_QCD_Mode"
-                        }
-                    ]
-                },
-                {
-                    "match": '\}\(((?!processes).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
-        },
-
-        {   name: 'meta.group.model',
-            begin: '\((model)',
-            end: '(model)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                {
-                    match: 'MODEL|MASSIVE|MASS|WIDTH|ACTIVE|STABLE|PRIORITY',
-                    name: 'variable.parameter'
-                },
-                {
-                    "match": '\}\(((?!model).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
-        },
-
-        {   name: 'meta.group.selector',
-            begin: '\((selector)',
-            end: '(selector)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                {
-                    match: 'Energy|ET|PT|(Pseudo)?Rapidity|Mass|(Beam)?Angle|Delta(Eta|Y|Phi|R)|Decay(Mass|2)?|(NJet|Cone|Jet)Finder',
-                    name: 'variable.parameter'
-                },
-                {
-                    "match": '\}\(((?!selector).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
-        },
-
-        {   name: 'meta.group.analysis',
-            begin: '\((analysis)',
-            end: '(analysis)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                {
-                    name: 'meta.group.analysis.rivet',
-                    begin: '(BEGIN_RIVET)',
-                    end: '(END_RIVET)',
-                    beginCaptures: {
-                        "1": { name: 'keyword.control' }
+                        "comment": "Option values for NLO_QCD_Part"
                     },
-                    endCaptures: {
-                        "1": { name: 'keyword.control' }
-                    },
-                    patterns: [
-                        { include: '#number-sign-comment' },
-                        { include: '#percentage-comment' }
-                    ]
-                },
-                {
-                    "match": '\}\(((?!analysis).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
-        },
 
-        {   name: 'meta.group.beam',
-            begin: '\((beam)',
-            end: '(beam)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
+                    { "match": "Fixed_Order|MC@NLO",
+                        "name": "constant.language",
+                        "comment": "Option values for NLO_QCD_Mode"
+                    }
+                ]
             },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                {
-                    match: 'BEAM_[12]|BEAM_ENERGY_[12]|BEAM_SPECTRUM_[12]|E_LASER_[12]|P_LASER_[12]|LASER_MODE|LASER_ANGLES|LASER_NONLINEARITY',
-                    name: 'variable.parameter'
-                },
-                {
-                    "match": '\}\(((?!beam).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
-        },
+            {
+                "match": '\}\(((?!processes).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
 
-        {   name: 'meta.group.mi',
-            begin: '\((mi)',
-            end: '(mi)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                {
-                    match: 'MI_HANDLER|SCALE_MIN|PROFILE_(FUNCTION|PARAMETERS)|REFERENCE_SCALE|RESCALE_EXPONENT|SIGMA_ND_FACTOR|MI_RESULT_DIRECTORY(_SUFFIX)?',
-                    name: 'variable.parameter'
-                },
-                {
-                    "match": '\}\(((?!mi).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
+    {   name: 'meta.group.model',
+        begin: '\((model)',
+        end: '(model)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
         },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'MODEL|MASSIVE|MASS|WIDTH|ACTIVE|STABLE|PRIORITY',
+                name: 'variable.parameter'
+            },
+            {
+                "match": '\}\(((?!model).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
 
-        {   name: 'meta.group.fragmentation',
-            begin: '\((fragmentation)',
-            end: '(fragmentation)\)',
-            beginCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            endCaptures: {
-                "1": { name: 'entity.name.group' }
-            },
-            patterns: [
-                { include: '#number-sign-comment' },
-                { include: '#percentage-comment' },
-                { include: '#numeric-constant'},
-                { include: '#general-language-constants'},
-                {
-                    match: 'FRAGMENTATION|MSTJ|MSTP|MSTU|PARP|PARJ|PARU|DECAYMODEL|DECAYPATH|SOFT_MASS_SMEARING|MAX_PROPER_LIFETIME|YFS_MODE|YFS_USE_ME|YFS_IR_CUTOFF',
-                    name: 'variable.parameter'
-                },
-                { "match": "Ahadic|Lund|Hadrons",
-                    "name": "constant.language",
-                },
-                {
-                    "match": '\}\(((?!fragmentation).)*$',
-                    "name": 'invalid.illegal'
-                }
-            ]
+    {   name: 'meta.group.selector',
+        begin: '\((selector)',
+        end: '(selector)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
         },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'Energy|ET|PT|(Pseudo)?Rapidity|Mass|(Beam)?Angle|Delta(Eta|Y|Phi|R)|Decay(Mass|2)?|(NJet|Cone|Jet)Finder',
+                name: 'variable.parameter'
+            },
+            {
+                "match": '\}\(((?!selector).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
 
-        {   match: '[^; \n]',
-            name: 'invalid.illegal',
-            comment: ''
-        }
-    ],
-    repository: {
-        "internal-interpreter": {
-            begin: '\{',
-            end: '\}',
-            name: 'meta.internal-interpreter',
-            patterns: [
-                {
-                    match: '[ =\[*](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
-                    captures: {
-                        "1": { name: 'constant.numeric' }
-                    },
-                    name: ''
-                }
-            ]
+    {   name: 'meta.group.analysis',
+        begin: '\((analysis)',
+        end: '(analysis)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
         },
-        "number-sign-comment": {
-            match: '#.*$',
-            name: 'comment.line.number-sign',
-            comment: ''
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
         },
-        "percentage-comment": {
-            match: '%.*$',
-            name: 'comment.line.percentage',
-            comment: ''
-        },
-        "numeric-constant": {
-            match: '[ =\[](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
-            captures: {
-                "1": { name: 'constant.numeric' }
+        patterns: [
+            {
+                name: 'meta.group.analysis.rivet',
+                begin: '(BEGIN_RIVET)',
+                end: '(END_RIVET)',
+                beginCaptures: {
+                    "1": { name: 'keyword.control' }
+                },
+                endCaptures: {
+                    "1": { name: 'keyword.control' }
+                },
+                patterns: [
+                    { include: '#number-sign-comment' },
+                    { include: '#percentage-comment' }
+                ]
             },
-            name: ''
+            {
+                "match": '\}\(((?!analysis).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
+
+    {   name: 'meta.group.beam',
+        begin: '\((beam)',
+        end: '(beam)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
         },
-        "general-language-constants": {
-            match: 'None|Off|On',
-            name: 'constant.language'
-        }
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'BEAM_[12]|BEAM_ENERGY_[12]|BEAM_SPECTRUM_[12]|E_LASER_[12]|P_LASER_[12]|LASER_MODE|LASER_ANGLES|LASER_NONLINEARITY',
+                name: 'variable.parameter'
+            },
+            {
+                "match": '\}\(((?!beam).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
+
+    {   name: 'meta.group.mi',
+        begin: '\((mi)',
+        end: '(mi)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'MI_HANDLER|SCALE_MIN|PROFILE_(FUNCTION|PARAMETERS)|REFERENCE_SCALE|RESCALE_EXPONENT|SIGMA_ND_FACTOR|MI_RESULT_DIRECTORY(_SUFFIX)?',
+                name: 'variable.parameter'
+            },
+            {
+                "match": '\}\(((?!mi).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
+
+    {   name: 'meta.group.fragmentation',
+        begin: '\((fragmentation)',
+        end: '(fragmentation)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'FRAGMENTATION|MSTJ|MSTP|MSTU|PARP|PARJ|PARU|DECAYMODEL|DECAYPATH|SOFT_MASS_SMEARING|MAX_PROPER_LIFETIME|YFS_MODE|YFS_USE_ME|YFS_IR_CUTOFF',
+                name: 'variable.parameter'
+            },
+            { "match": "Ahadic|Lund|Hadrons",
+                "name": "constant.language",
+            },
+            {
+                "match": '\}\(((?!fragmentation).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
+
+    {   match: '[^; \n]',
+        name: 'invalid.illegal',
+        comment: ''
+    }
+]
+repository: {
+    "internal-interpreter": {
+        begin: '\{',
+        end: '\}',
+        name: 'meta.internal-interpreter',
+        patterns: [
+            {
+                match: '[ =\[*](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
+                captures: {
+                    "1": { name: 'constant.numeric' }
+                },
+                name: ''
+            }
+        ]
+    },
+    "number-sign-comment": {
+        match: '#.*$',
+        name: 'comment.line.number-sign',
+        comment: ''
+    },
+    "percentage-comment": {
+        match: '%.*$',
+        name: 'comment.line.percentage',
+        comment: ''
+    },
+    "numeric-constant": {
+        match: '[ =\[](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
+        captures: {
+            "1": { name: 'constant.numeric' }
+        },
+        name: ''
+    },
+    "general-language-constants": {
+        match: 'None|Off|On',
+        name: 'constant.language'
     }
 }
+
+...
