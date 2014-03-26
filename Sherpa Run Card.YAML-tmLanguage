@@ -2,6 +2,8 @@
 ---
 name: Sherpa Run Card
 scopeName: source.sherpa
+fileTypes:
+- sherpa
 uuid: dd8ff0c6-5849-41f4-9bd8-e0167ae42236
 patterns: [
     { include: '#number-sign-comment' },
