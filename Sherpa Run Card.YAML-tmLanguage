@@ -309,6 +309,34 @@ patterns: [
         ]
     },
 
+    {   name: 'meta.group.isr',
+        begin: '\((isr)',
+        end: '(isr)\)',
+        beginCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        endCaptures: {
+            "1": { name: 'entity.name.group' }
+        },
+        patterns: [
+            { include: '#number-sign-comment' },
+            { include: '#percentage-comment' },
+            { include: '#numeric-constant'},
+            { include: '#general-language-constants'},
+            {
+                match: 'PDF_LIBRARY|PDF_SET',
+                name: 'variable.parameter'
+            },
+            { "match": "LHAPDFSherpa",
+                "name": "constant.language",
+            },
+            {
+                "match": '\}\(((?!isr).)*$',
+                "name": 'invalid.illegal'
+            }
+        ]
+    },
+
     {   match: '[^; \n]',
         name: 'invalid.illegal',
         comment: ''
