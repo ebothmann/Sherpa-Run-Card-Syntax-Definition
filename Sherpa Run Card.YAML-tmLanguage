@@ -125,7 +125,7 @@ patterns: [
                         name: 'keyword.operator'
                     },
                     {
-                        match: 'DecayOS|Decay|No_Decay|Scales|Couplings|CKKW|Selector_File|Order_EW|Max_Order_EW|Max_Order_QCD|Order_QCD|Min_N_Quarks|Max_N_Quarks|Min_N_TChannels|Max_N_TChannels|Print_Graphs|Integration_Error|Max_Epsilon|RS_Enhance_Factor|Enhance_Factor|Enhance_Function|Enhance_Observable|NLO_(QCD|EW)_(Mode|Part)|Subdivide_Virtual|ME_Generator|Loop_Generator|Integrator',
+                        match: 'DecayOS|Decay|No_Decay|Scales|Couplings|CKKW|Selector_File|Order|Order_EW|Max_Order_EW|Max_Order_QCD|Order_QCD|Min_N_Quarks|Max_N_Quarks|Min_N_TChannels|Max_N_TChannels|Print_Graphs|Integration_Error|Max_Epsilon|RS_Enhance_Factor|Enhance_Factor|Enhance_Function|Enhance_Observable|NLO_(QCD|EW)_(Mode|Part)|Subdivide_Virtual|ME_Generator|Loop_Generator|Integrator',
                         name: 'variable.parameter'
                     },
                     { "match": "( )([BIVRS]+)([;\n \t])",
@@ -324,7 +324,7 @@ patterns: [
             { include: '#numeric-constant'},
             { include: '#general-language-constants'},
             {
-                match: 'PDF_LIBRARY|PDF_SET',
+                match: 'PDF_LIBRARY|PDF_SET|USE_PDF_ALPHAS',
                 name: 'variable.parameter'
             },
             { "match": "LHAPDFSherpa",
