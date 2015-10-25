@@ -349,7 +349,7 @@ repository: {
         name: 'meta.internal-interpreter',
         patterns: [
             {
-                match: '[ =\[*](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
+                match: '[ =\[*](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(k|M|e[0-9]+)?)',
                 captures: {
                     "1": { name: 'constant.numeric' }
                 },
@@ -368,7 +368,7 @@ repository: {
         comment: ''
     },
     "numeric-constant": {
-        match: '[ =\[](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(M|e[0-9]+)?)',
+        match: '[ =\[](-?([0-9]*\.[0-9]+|[0-9]+\.[0-9]*|[0-9]+)(k|M|e[0-9]+)?)',
         captures: {
             "1": { name: 'constant.numeric' }
         },
